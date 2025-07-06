@@ -1,0 +1,103 @@
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');* {
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff;
+  }
+
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .task-box,
+  .input-div,
+  .select-div,
+  .add-task {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #00f7ff33;
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0 0 20px #00f7ff22;
+    transition: 0.3s;
+    color: white;
+  }
+
+  .add-task {
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .add-task:hover {
+    box-shadow: 0 0 20px #00f7ff88;
+  }
+
+  .input-div-input,
+  .input-text {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #00f7ff;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    margin: 10px 0;
+    outline: none;
+  }
+
+  button {
+    background-color: #00f7ff;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  button:hover {
+    background-color: #00aaff;
+    box-shadow: 0 0 10px #00f7ff;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    margin-top: 5px;
+    display: none;
+  }
+
+  .completed-message {
+    font-weight: bold;
+    color: lime;
+    margin-top: 10px;
+  }
+
+  .buttons {
+    margin-top: 10px;
+  }
+
+  .buttons button {
+    margin-right: 5px;
+  }
+
+  label {
+    display: block;
+    margin: 5px 0;
+  }
