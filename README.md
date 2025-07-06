@@ -40,7 +40,7 @@ A visually engaging and interactive task management web app built with HTML, CSS
 
 
 
-## 📦 Installation (Optional)
+## 📦 If You Want to Run Locally 
 
 If you want to run it locally:
 
