@@ -15,6 +15,7 @@ function addTask() {
   addTaskDiv.style.display = 'none';
   const inputDiv = document.createElement("div")
   inputDiv.className = 'input-div';
+  inputDiv.id = 'input-div';
   const inputDivText = document.createElement('h2')
   inputDivText.textContent = 'Enter New Task Name :'
   const inputDivInput = document.createElement('input');
@@ -22,8 +23,8 @@ function addTask() {
   inputDivInput.className = 'input-div-input';
   inputDivInput.placeholder = 'Enter Task Name';
   const inputDivError = document.createElement('div')
-  inputDivError.className = 'error-message'
-  inputDivError.textContent = '- - -input task name- - -'
+ // inputDivError.className = 'error-message'
+//  inputDivError.textContent = '- - -input task name- - -'
   const inputDivButton = document.createElement('button')
   inputDivButton.id = 'input-div-button';
   inputDivButton.textContent = 'Next';
@@ -38,15 +39,15 @@ function addTask() {
 
 
 function createNext() {
-  document.querySelector('.input-div').style.display = 'none';
+  
   const inputDivValue = document.querySelector('.input-div-input').value.trim();
   if (inputDivValue === '') {
-    document.querySelector('.error-message').style.display = 'block';
-
-    console.log(inputDivValue)
+    alert('Please fill the text field');
+   return;
   } else {
     taskName.push({ taskNameText: inputDivValue });
     saveToStorage();
+    document.getElementById('input-div').style.display = 'none' ;
 
     const selectDiv = document.createElement('div');
     selectDiv.className = 'select-div';
@@ -73,7 +74,7 @@ function createNext() {
     }
 
     const selectButton = document.createElement('button');
-    selectButton.textContent = 'Create Task';
+    selectButton.textContent = 'Next';
     selectButton.onclick = createInputDiv;
 
     selectDiv.appendChild(label);
@@ -87,7 +88,7 @@ function createNext() {
 };
 
 function createInputDiv() {
-  document.querySelector('.select-div').style.display = 'none';
+  
   const select = document.getElementById('numCheckboxes');
   const num = parseInt(select.value);
 
@@ -95,10 +96,13 @@ function createInputDiv() {
     alert('Please select a number between 1 and 5');
     return;
   }
-
+  document.querySelector('.select-div').style.display = 'none';
+    
   const inputDiv = document.createElement('div');
   inputDiv.className = 'input-div';
-
+ const inputTextSpan = document.createElement('span');
+inputTextSpan.textContent = 'please input the sub task in order in which they will executed inorder to achieve the stated task.';
+ inputDiv.appendChild(inputTextSpan);
   const inputArray = [];
 
   for (let i = 1; i <= num; i++) {
@@ -107,9 +111,10 @@ function createInputDiv() {
     input.id = `cb-${Date.now()}-${i}`;
     input.className = 'input-text'
     input.setAttribute('data-key', `value${i}`);
+    input.placeholder = 'sub task' + i;
 
     const br = document.createElement('br');
-
+    
     inputArray.push(input);
     inputDiv.appendChild(input);
     inputDiv.appendChild(br);
@@ -124,7 +129,7 @@ function createInputDiv() {
 };
 
 function createNewTask() {
-  document.querySelector('.input-div').style.display = 'none';
+  
   const text = document.getElementsByClassName('input-text');
   const select = document.getElementById('numCheckboxes');
   const num = parseInt(select.value);
@@ -139,7 +144,8 @@ function createNewTask() {
       alert('Please fill in all selected inputs.');
       return; // stop the function
     }
-
+    
+    document.querySelector('.input-div').style.display = 'none';
     obj[key] = value;
   }
 
@@ -158,6 +164,7 @@ function renderItems() {
 
     const textSpan = document.createElement('span');
     textSpan.textContent = item.taskNameText;
+    textSpan.className = 'task-name';
     const br = document.createElement('br');
     div.appendChild(textSpan);
      div.appendChild(br);
@@ -177,6 +184,7 @@ function renderItems() {
     const editBtn = document.createElement('button');
     editBtn.className = 'btn edit-btn';
     editBtn.textContent = 'Edit';
+    editBtn.id = 'editBtn';
     editBtn.onclick = () => {
       const newText = prompt('Edit the task name:', item.taskNameText);
       if (newText !== null && newText.trim() !== '') {
@@ -185,7 +193,7 @@ function renderItems() {
         renderItems();
       }
     };
-
+    
     // Start of checkbox rendering
     const checkboxes = [];
     const subtasks = inputItems[index];
@@ -222,6 +230,7 @@ function renderItems() {
         completedMsg.textContent = 'COMPLETED';
         completedMsg.style.color = 'green';
         div.appendChild(completedMsg);
+        document.getElementById('editBtn').style.display = 'none';
       }
     };
     // End of checkbox rendering
