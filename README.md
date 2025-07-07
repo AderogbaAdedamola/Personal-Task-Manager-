@@ -44,6 +44,5 @@ A visually engaging and interactive task management web app built with HTML, CSS
 
 If you want to run it locally:
 
-git clone https://github.com/your-username/personal-task-manager.git
-cd personal-task-manager
-open index.html
+git clone https://aderogbaadedamola.github.io/Personal-Task-Manager-/
+
